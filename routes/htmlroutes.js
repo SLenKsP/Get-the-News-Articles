@@ -19,12 +19,15 @@ var someArticles = [{
     }
 ];
 var testNotes = [{
-        note: "note 1"
+        notedTime: "notedTime 1",
+        note: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, similique in aliquid laudantium rerum tenetur excepturi corrupti quidem minima possimus eius. Quibusdam adipisci doloremque maiores voluptas, totam exercitationem cupiditate perferendis."
     },
     {
+        notedTime: "notedTime 2",
         note: "note 2"
     },
     {
+        notedTime: "notedTime 3",
         note: "note 3"
     }
 ]

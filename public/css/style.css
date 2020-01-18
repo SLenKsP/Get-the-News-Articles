@@ -1,0 +1,16 @@
+.notes_model {
+    background-image: url("https://ww2.kqed.org/wp-content/uploads/sites/23/2015/08/notetaking.jpg");
+}
+
+.delete_note:hover {
+    transform: scale(1.5);
+}
+
+.note_card:hover, .article_item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 px rgb(250, 231, 166);
+}
+
+/* .saved_article {
+    display: none;
+} */
