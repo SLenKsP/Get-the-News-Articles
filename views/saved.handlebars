@@ -2,16 +2,14 @@
     <div class="jumbotron py-0">
 
         <div class="text-center">
-            <a name = "home_btn" id="home_title" class="btn display-4" href= "/" role="button">The
+            <a name="home_btn" id="home_title" class="btn display-4" href="/"
+                role="button">The
                 News</button></a>
         </div>
         <hr>
-
         <div class="dropdown display-inline">
-            <a name="saved_articles" class="saved_articles btn btn-primary mr-2"
-                href="/saved" role="button">Saved Articles</a>
-            <button type="button" id="scrap_articles" class="btn btn-primary
-                mr-2">Load New Articles</button>
+            <a name="saved_articles" class="home_page btn btn-primary mr-2"
+                href="/" role="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Go to Home</a>
         </div>
         {{!-- show current date --}}
         <h6 class="text-right mb-0">Date: <span id="currentDate"
@@ -19,8 +17,13 @@
     </div>
     {{!-- list of scrapped articles --}}
     <div id="body">
-        <div class="loadnews">
-            {{> loadnews}}
+        <div class="savedNews">
+            {{> saved_articles}}
         </div>
     </div>
+    {{!-- note Model --}}
+   <div>
+       {{> notes_for_saved_articles}}
+   </div>
 </div>
+

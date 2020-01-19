@@ -24,7 +24,8 @@ app.set("view engine", "handlebars");
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/news_articles_db";
 mongoose.connect(MONGODB_URI, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    // useCreateIndex: true
 });
 // routes
 require(`./routes/apiroutes`)(app);

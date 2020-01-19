@@ -1,0 +1,21 @@
+<div class="articles">
+    {{#each savedArticles}}
+    <div class="article_item card mb-2">
+        <div class="card-body">
+            <h4 class="card-title">{{article_title}}</h4>
+            <img class="article_img card-img-top" src="{{article_img_src}}"
+                alt="img.img">
+            <p class="card-text">{{article_summary}}</p>
+            <h6>Read More... <a href="https://www.nytimes.com{{url_link}}"
+                    target="_blank">{{url_link}}</a></h6>
+            <button type="button" class="remove_from_save_article btn
+                btn-danger mr-2" data_id="{{_id}}"">Remove from Saved</button>
+            {{!-- show notes --}}
+            <button type="button" class="btn btn-info" data-toggle="modal"
+                data-target="#modelId">
+                Notes
+            </button>
+        </div>
+    </div>
+    {{/each}}
+</div>

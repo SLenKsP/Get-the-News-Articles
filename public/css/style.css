@@ -14,3 +14,17 @@
 /* .saved_article {
     display: none;
 } */
+
+.article_img {
+    width: 200px;
+    height: 150px;
+}
+
+.card-body {
+    background-color: rgb(244, 219, 183);
+}
+
+#home_title{
+    font-size: 72px;
+    color: rgb(238, 140, 54);
+}
