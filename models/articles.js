@@ -4,9 +4,33 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var ArticleSchema = new Schema({
-
+    article_title: {
+        type: String,
+        required: true
+    },
+    url_link: {
+        type: String,
+        required: true
+    },
+    article_summary: {
+        type: String,
+        required: true
+    },
+    article_img_src: {
+        type: String,
+        required: true
+    },
+    saved: {
+        type: Boolean,
+        default: false
+    },
+    article_notes: [{
+        type: Schema.Types.ObjectId,
+        ref: "Notes"
+    }],
+    
 });
 
-var Article = mongoose.model("Article", ArticleSchema);
+var Articles = mongoose.model("Article", ArticleSchema);
 
-module.exports = Article;
+module.exports = Articles;

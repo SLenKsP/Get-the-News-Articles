@@ -36,17 +36,23 @@ module.exports = app => {
     //     res.render(`index`);
     // })
     app.get(`/`, (req, res) => {
-        var articlesData = {
-            someArticles: [],
-            notes: []
-        }
-        someArticles.map((item) => {
-            articlesData.someArticles.push(item);
+        // var articlesData = {
+        //     someArticles: [],
+        //     notes: []
+        // }
+        // someArticles.map((item) => {
+        //     articlesData.someArticles.push(item);
+        // });
+        // testNotes.map((item) => {
+        //     articlesData.notes.push(item);
+        // });
+        // console.log(articlesData);
+        // res.render(`index`, articlesData);
+        db.Articles.find({}, (err, result) => {
+            if (err) throw err;
+            res.render(`index`, {
+                articlesData: result
+            });
         });
-        testNotes.map((item) => {
-            articlesData.notes.push(item);
-        });
-        console.log(articlesData);
-        res.render(`index`, articlesData);
     })
 }

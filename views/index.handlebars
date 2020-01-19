@@ -5,7 +5,7 @@
 
         <div class="dropdown display-inline">
             <button type="button" class="btn btn-primary mr-2">Saved Articles</button>
-            <button type="button" class="btn btn-primary mr-2">Load New Articles</button>
+            <button type="button" id = "scrap_articles" class="btn btn-primary mr-2">Load New Articles</button>
         </div>
         {{!-- show current date --}}
         <h6 class="text-right mb-0">Date: <span id="currentDate"
@@ -17,11 +17,12 @@
             <div class="articles">
                 {{#each someArticles}}
                 <div class="article_item card mb-2">
-                    <img class="card-img-top" src="{{imgUrl}}"
-                        alt="{{imgAltText}}">
+                    <img class="card-img-top" src="{{this.imgUrl}}"
+                        alt="img.img">
                     <div class="card-body">
-                        <h4 class="card-title">{{articleTitle}}</h4>
-                        <p class="card-text">{{articleText}}</p>
+                        <h4 class="card-title">{{this.articleTitle}}</h4>
+                        <p class="card-text">{{this.articleText}}</p>
+                        <h6>Read More... <a href="{{this.url_link}}" target="_blank">{{this.url_link}}</a></h6>
                         <button type="button" class="save_article btn
                             btn-primary mr-2">Save
                             Article</button>
@@ -52,8 +53,9 @@
                         font-weight-bolder float-right m-2"
                         data-dismiss="modal">X</button>
                 </div>
+
                 <div class="modal-body">
-                    <h5>Notes</h5>
+                    <h5 class="text-light">Notes</h5>
                     <div class="notes">
                         {{#each notes}}
                         <div class="note_card alert alert-primary" role="alert">
@@ -66,14 +68,20 @@
                         </div>
                         {{/each}}
                     </div>
+
                     <hr>
                     {{!-- add new note --}}
                     <div class="add_note">
-                        <h5 class="">New Note:</h5>
+                        <h5 class="text-light">New Note</h5>
                         <div class="form-group">
+                            <input type="text" class="form-control mb-2"
+                                name="note_title"
+                                id="note_title" aria-describedby="helpId"
+                                placeholder="Add the Title">
                             <textarea class="form-control mb-2" name="note_text"
                                 id="note_text"
-                                rows="3"></textarea>
+                                rows="3" minlength="50" maxlength="100"
+                                placeholder="Add your Notes here"></textarea>
                             {{!-- save new note --}}
                             <button type="button" class="btn btn-primary
                                 float-right">Save</button>

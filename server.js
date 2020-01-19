@@ -1,5 +1,7 @@
 var express = require("express");
 var exphbs = require("express-handlebars");
+
+var mongoose = require("mongoose");
 var db = require("./models");
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -20,6 +22,10 @@ app.engine('handlebars', exphbs({
 }));
 app.set("view engine", "handlebars");
 
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/news_articles_db";
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: true
+});
 // routes
 require(`./routes/apiroutes`)(app);
 require(`./routes/htmlroutes`)(app);
