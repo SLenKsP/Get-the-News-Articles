@@ -1,52 +1,59 @@
-  {{!-- note Model --}}
-    <div class="modal fade" id="modelId" tabindex="-1" role="dialog"
-        aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content notes_model">
-                <div>
-                    {{!-- close notes model --}}
-                    <button type="button" class="btn btn-light text-danger
-                        font-weight-bolder float-right m-2"
-                        data-dismiss="modal">X</button>
-                </div>
+ {{!-- note Model --}}
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog"
+    aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content notes_model">
+            <div>
+                {{!-- close notes model --}}
+                <button type="button" class="btn btn-light text-danger
+                    font-weight-bolder float-right m-2"
+                    data-dismiss="modal">X</button>
+            </div>
 
-                <div class="modal-body">
-                    <h5 class="text-light">Notes</h5>
-                    <div class="notes">
-                        {{#each notes}}
-                        <div class="note_card alert alert-primary" role="alert">
-                            <h6>{{notedTime}}</h6>
-                            <p class="mb-0"><strong>{{note}}</strong> <i
-                                    class="delete_note fa fa-trash float-right
-                                    mb-2"
-                                    aria-hidden="true"></i></p>
-
-                        </div>
-                        {{/each}}
+            <div class="modal-body">
+                <h5 class="text-light">Notes</h5>
+                <div class="notes">
+                    {{#if notes}}
+                    {{#each notes}}
+                    <div class="note_card alert alert-primary" role="alert">
+                        <h6>{{note_title}}</h6>
+                        <p class="mb-0"><strong>{{note_summary}}</strong> <i
+                                class="delete_note fa fa-trash float-right
+                                mb-2"
+                                aria-hidden="true" note_id= {{_id}} article_id=
+                                {{article_id}}></i></p>
                     </div>
+                    {{/each}}
+                    {{else}}
+                    <div class="note_card alert alert-warning" role="alert">
+                        <h6>No Notes Yet!</h6>
+                    </div>
+                    {{/if}}
+                </div>
 
-                    <hr>
-                    {{!-- add new note --}}
-                    <div class="add_note">
-                        <h5 class="text-light">New Note</h5>
-                        <div class="form-group">
-                            <input type="text" class="form-control mb-2"
-                                name="note_title"
-                                id="note_title" aria-describedby="helpId"
-                                placeholder="Add the Title">
-                            <textarea class="form-control mb-2" name="note_text"
-                                id="note_text"
-                                rows="3" minlength="50" maxlength="100"
-                                placeholder="Add your Notes here"></textarea>
-                            {{!-- save new note --}}
-                            <button type="button" class="btn btn-primary
-                                float-right">Save</button>
-                        </div>
+                <hr>
+                {{!-- add new note --}}
+                <div class="add_note">
+                    <h5 class="text-light">New Note</h5>
+                    <div class="form-group">
+                        <input type="text" class="note_title form-control mb-2"
+                            name="note_title"
+                            aria-describedby="helpId"
+                            placeholder="Add the Title">
+                        <textarea class="note_summary form-control mb-2"
+                            name="note_summary"
+                            rows="3" minlength="50" maxlength="100"
+                            placeholder="Add your Notes here"></textarea>
+                        {{!-- save new note --}}
+                        <button id="save_new_note" type="button" class="btn
+                            btn-primary
+                            float-right" data_id= {{_id}}>Save</button>
                     </div>
                 </div>
-                <div class="modal-footer">
+            </div>
+            <div class="modal-footer">
 
-                </div>
             </div>
         </div>
     </div>
+</div>

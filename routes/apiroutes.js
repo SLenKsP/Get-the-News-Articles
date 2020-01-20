@@ -31,7 +31,7 @@ module.exports = app => {
                 // result.summary = $(this).children(`a`).children(`p`).text();
                 // result.imgsrc = $(this).children(`a`).children(`div`).children(`figure`).children(`div`).children(`img`).attr(`src`);
 
-                console.log(result);
+                // console.log(result);
                 db.Articles.create(
                     result
                 ).then((dbarticle) => {
@@ -53,9 +53,49 @@ module.exports = app => {
         }, {
             saved: true
         }).then(function (response) {
+            res.json(response);
             console.log(response);
         }).catch(function (err) {
             console.log(err);
         });
     });
+
+    // unsave article in database
+    app.post(`/api/unsave/:id`, function (req, res) {
+        var id = req.params.id;
+        db.Articles.findOneAndUpdate({
+            _id: id
+        }, {
+            saved: false
+        }).then(function (response) {
+            res.json(response);
+            console.log(response);
+        }).catch(function (err) {
+            console.log(err);
+        });
+    });
+
+    // create a note for article
+    app.post(`/api/articles/:id`, function (req, res) {
+
+        console.log(req.body.note_title);
+        console.log(req.body.note_summary);
+        db.Notes.create({
+            note_title: req.body.note_title,
+            note_summary: req.body.note_summary
+        }).then(function (dbNote) {
+            return db.Articles.findOneAndUpdate({
+                _id: req.params.id
+            }, {
+                article_notes: dbNote._id
+            }, {
+                new: true
+            })
+        }).then((dbArticle) => {
+            console.log(dbArticle);
+            res.json(dbArticle);
+        }).catch((err) => {
+            res.json(err);
+        })
+    })
 }

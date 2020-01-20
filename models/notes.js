@@ -5,12 +5,16 @@ var Schema = mongoose.Schema;
 
 var NotesPerArticle = new Schema({
     note_title: {
-        type: String, 
+        type: String,
         required: true
-    }, 
+    },
     note_summary: {
-        type: String, 
+        type: String,
         required: true
+    },
+    article: {
+        type: Schema.Types.ObjectId,
+        ref: 'Article'
     }
 });
 

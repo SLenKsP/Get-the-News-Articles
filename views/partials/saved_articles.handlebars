@@ -1,4 +1,5 @@
 <div class="articles">
+    {{#if savedArticles}}
     {{#each savedArticles}}
     <div class="article_item card mb-2">
         <div class="card-body">
@@ -9,13 +10,25 @@
             <h6>Read More... <a href="https://www.nytimes.com{{url_link}}"
                     target="_blank">{{url_link}}</a></h6>
             <button type="button" class="remove_from_save_article btn
-                btn-danger mr-2" data_id="{{_id}}"">Remove from Saved</button>
+                btn-danger mr-2" data_id="{{_id}}">Remove from Saved</button>
             {{!-- show notes --}}
-            <button type="button" class="btn btn-info" data-toggle="modal"
+            <button type="button" class="article_notes btn btn-info"
+                data-toggle="modal" note_id= {{_id}}
                 data-target="#modelId">
                 Notes
             </button>
         </div>
     </div>
     {{/each}}
-</div>
+    {{else}}
+    <div class="article_item card mb-2">
+        <div class="card-body">
+            <h4 class="card-title">No saved Articles!<br/> Please, go to <a
+                        href="/">Home
+                        Page</a> to
+                    save
+                    some articles!</h4>
+            </div>
+        </div>
+        {{/if}}
+    </div>
