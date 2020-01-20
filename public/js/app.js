@@ -114,6 +114,7 @@ getNotesForArticle = () => {
             url: "/articles/" + note_id
         }).then((response) => {
             // console.log(response);
+
         });
     });
 }

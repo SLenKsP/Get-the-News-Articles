@@ -26,26 +26,13 @@ module.exports = app => {
     })
     //get notes for single article
     app.get(`/articles/:id`, function (req, res) {
-        // db.Articles.findOne({
-        //     _id: req.params.id
-        // }).populate("Notes").then(function (dbArticle) {
-        //     console.log(dbArticle.article_notes);
-        //     // res.render("notes_for_saved_articles", {
-        //     //     notes: dbArticle
-        //     // });
-        //     JSON.stringify(dbArticle, null, 2)
-        //     res.json(dbArticle)
-        //     // res.render("saved", {
-        //     //     notes: dbArticle
-        //     // })
-        // }).catch(function (err) {
-        //     res.json(err);
-        // })
         db.Notes.find({
             article: req.params.id
         }).then(function (response) {
             console.log(response);
-            // res.json(response);
+            // res.json({
+            //     response
+            // });
 
             res.render("saved", {
                 article_notes: response
