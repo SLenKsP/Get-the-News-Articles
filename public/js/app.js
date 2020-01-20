@@ -16,7 +16,7 @@ scrapArticles = () => {
         e.preventDefault();
         $.ajax({
             type: "GET",
-            url: "/",
+            url: "/api/scrap",
             success: showArticlesOnPageLoad()
         }).then((res) => {
             // console.log(res);
@@ -24,15 +24,15 @@ scrapArticles = () => {
         })
     });
 }
-loadArticlesOnPageLoad = () => {
-    $.ajax({
-        type: "GET",
-        url: "/api/scrap",
-    }).then((res) => {
-        // console.log(res);
-        // showArticlesOnPageLoad();
-    });
-}
+// loadArticlesOnPageLoad = () => {
+//     $.ajax({
+//         type: "GET",
+//         url: "/api/scrap",
+//     }).then((res) => {
+//         // console.log(res);
+//         showArticlesOnPageLoad();
+//     });
+// }
 showArticlesOnPageLoad = () => {
     $.ajax({
         type: "GET",
@@ -96,9 +96,11 @@ addNoteToTheArticle = () => {
             url: "/api/articles/" + note_id,
             data: note_data
         }).done((response) => {
-            console.log(response);
-            location.reload();
+            // console.log(response);
+            // location.reload();
         })
+        $(`.note_title`).val("");
+        $(`.note_summary`).val("");
     });
 }
 
@@ -111,7 +113,7 @@ getNotesForArticle = () => {
             method: "GET",
             url: "/articles/" + note_id
         }).then((response) => {
-            console.log(response);
+            // console.log(response);
         });
     });
 }

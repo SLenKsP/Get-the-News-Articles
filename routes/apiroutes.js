@@ -1,5 +1,6 @@
 const db = require(`../models`);
-
+var axios = require("axios");
+var cheerio = require("cheerio");
 module.exports = app => {
     app.get(`/api/scrap`, function (req, res) {
         axios({
@@ -36,7 +37,7 @@ module.exports = app => {
                     result
                 ).then((dbarticle) => {
                     console.log(dbarticle);
-                    // res.redirect(`/`);
+                    res.json(dbarticle)
                 }).catch((err) => {
                     if (err) throw err
                     console.log(err);
@@ -82,20 +83,21 @@ module.exports = app => {
         console.log(req.body.note_summary);
         db.Notes.create({
             note_title: req.body.note_title,
-            note_summary: req.body.note_summary
+            note_summary: req.body.note_summary,
+            article: req.params.id
         }).then(function (dbNote) {
             return db.Articles.findOneAndUpdate({
                 _id: req.params.id
             }, {
-                article_notes: dbNote._id
-            }, {
-                new: true
+                $push: {
+                    article_notes: dbNote._id
+                }
+            }).then(function (response) {
+                res.json(response);
             })
-        }).then((dbArticle) => {
-            console.log(dbArticle);
-            res.json(dbArticle);
-        }).catch((err) => {
-            res.json(err);
+        }).catch(function (err) {
+            if (err)
+                res.json(err);
         })
     })
 }

@@ -13,11 +13,11 @@
             <div class="modal-body">
                 <h5 class="text-light">Notes</h5>
                 <div class="notes">
-                    {{#if notes}}
-                    {{#each notes}}
+                    {{#if article_notes}}
+                    {{#each artical_notes}}
                     <div class="note_card alert alert-primary" role="alert">
-                        <h6>{{note_title}}</h6>
-                        <p class="mb-0"><strong>{{note_summary}}</strong> <i
+                        <h6>{{this.note_title}}</h6>
+                        <p class="mb-0"><strong>{{this.note_summary}}</strong> <i
                                 class="delete_note fa fa-trash float-right
                                 mb-2"
                                 aria-hidden="true" note_id= {{_id}} article_id=
