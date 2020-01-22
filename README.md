@@ -41,4 +41,9 @@
 
 - `empty text notice while trying to save note with no text`
 
+<<<<<<< HEAD
     ![empty text notice](./public/example_screenshots/text_empty_notice.png)
+=======
+    ![empty text notice](./public/example_screenshots/text_empty_notice.png)
+
+>>>>>>> 5950ad8a526356f63a4c01b33c139409b0321109
