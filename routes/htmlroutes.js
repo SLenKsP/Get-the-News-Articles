@@ -15,14 +15,22 @@ module.exports = app => {
         })
     })
     app.get(`/saved`, function (req, res) {
+        // db.Articles.find({
+        //     saved: true
+        // }).then(function (result) {
+        //     // console.log(result);
+        //     res.render(`saved`, {
+        //         savedArticles: result
+        //     })
+        // })
         db.Articles.find({
             saved: true
-        }).then(function (result) {
-            // console.log(result);
+        }).populate("article_notes").then(function (result) {
+            console.log('result :', JSON.stringify(result, null, 2));
             res.render(`saved`, {
                 savedArticles: result
-            })
-        })
+            });
+        });
     })
     //get notes for single article
     app.get(`/articles/:id`, function (req, res) {

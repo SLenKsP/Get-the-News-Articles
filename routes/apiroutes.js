@@ -43,7 +43,7 @@ module.exports = app => {
                     console.log(err);
                 });
             });
-            res.send(`scrap complete`)
+            // res.send(`scrap complete`)
         })
     });
     // save article in database
@@ -98,6 +98,19 @@ module.exports = app => {
         }).catch(function (err) {
             if (err)
                 res.json(err);
-        })
-    })
+        });
+    });
+
+    // Delete single note from article
+    app.delete(`/api/note/:id`, function (req, res) {
+        db.Notes.deleteOne({
+            _id: req.params.id
+        }).then(function (result) {
+            res.json(result);
+        }).catch((err) => {
+            if (err) {
+                res.json(err)
+            };
+        });
+    });
 }

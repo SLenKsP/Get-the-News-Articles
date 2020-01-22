@@ -10,18 +10,26 @@
             <h6>Read More... <a href="https://www.nytimes.com{{url_link}}"
                     target="_blank">{{url_link}}</a></h6>
             <button type="button" class="remove_from_save_article btn
-                btn-danger mr-2" data_id="{{_id}}">Remove from Saved</button>
+                btn-danger mr-2 mb-2" data_id="{{_id}}">Remove from Saved</button>
+            <p class="remove_notes_notice text-danger"></p>
+            <hr>
+            <h3><u>Article Notes</u></h3>
+            {{!-- show notes --}}
+            <div class="this_article_notes">
+                {{> notes_for_saved_articles}}
+            </div>
             {{!-- show notes --}}
             <button type="button" class="article_notes btn btn-info"
                 data-toggle="modal" note_id= {{_id}}
                 data-target="#modelId">
-                Notes
+                Add New Note
             </button>
+            <p class= "note_delete_confirmation_text text-danger"></p>
         </div>
     </div>
     {{/each}}
     {{else}}
-    <div class="article_item card mb-2">
+    <div class="article_item card my-2">
         <div class="card-body">
             <h4 class="card-title">No saved Articles!<br/> Please, go to <a
                         href="/">Home
@@ -33,4 +41,6 @@
         {{/if}}
     </div>
 
-   
+    <div>
+        {{> new_note_modal}}
+    </div>

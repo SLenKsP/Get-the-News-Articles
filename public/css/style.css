@@ -1,5 +1,5 @@
 .notes_model {
-    background-image: url("https://ww2.kqed.org/wp-content/uploads/sites/23/2015/08/notetaking.jpg");
+    background-image: url("https://wallpaperplay.com/walls/full/0/9/f/145594.jpg");
 }
 
 .delete_note:hover {
@@ -24,7 +24,11 @@
     background-color: rgb(244, 219, 183);
 }
 
-#home_title{
+#home_title {
     font-size: 72px;
     color: rgb(238, 140, 54);
+}
+
+.jumbotron {
+    background-image: url("http://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9");
 }

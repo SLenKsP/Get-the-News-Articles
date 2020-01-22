@@ -6,20 +6,12 @@
             <img class="article_img card-img-top" src="{{article_img_src}}"
                 alt="img.img">
             <p class="card-text">{{article_summary}}</p>
-            <h6>Read More... <a href="https://www.nytimes.com{{url_link}}"
+            <h6 class= "text-danger">Read More... <a href="https://www.nytimes.com{{url_link}}"
                     target="_blank">{{url_link}}</a></h6>
-            <button type="button" data_id = "{{_id}}"" class="save_article btn
-                btn-primary mr-2">Save
+            <button type="button" data_id = "{{_id}}" class="save_article btn
+                btn-secondary mr-2">Save
                 Article</button>
-            {{!-- saved btn --}}
-            {{!-- <button type="button" class="saved_article btn
-                btn-success mr-2"><i class="fa fa-check"
-                    aria-hidden="true"></i>Article Saved!</button> --}}
-            {{!-- show notes --}}
-            {{!-- <button type="button" class="btn btn-info" data-toggle="modal"
-                data-target="#modelId">
-                Notes
-            </button> --}}
+           
         </div>
     </div>
     {{/each}}
