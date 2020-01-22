@@ -43,6 +43,3 @@
 
     ![empty text notice](./public/example_screenshots/text_empty_notice.png)
 
-## Checkout the website on Heroku
-
-    - [National Parks Search](https://slenksp.github.io/Project_1_National_Parks/)
