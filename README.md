@@ -41,8 +41,8 @@
 
 - `empty text notice while trying to save note with no text`
 
-    ![empty text notice](./public/example_screenshots/text_empty_notice)
+    ![empty text notice](./public/example_screenshots/text_empty_notice.png)
 
 ## Checkout the website on Heroku
 
-    [Heroku link](https://news-scrapper-us.herokuapp.com/)
+    - [Heroku link](https://news-scrapper-us.herokuapp.com/)
