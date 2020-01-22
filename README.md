@@ -45,4 +45,4 @@
 
 ## Checkout the website on Heroku
 
-    [Heroku link] (https://news-scrapper-us.herokuapp.com/)
+    [Heroku link](https://news-scrapper-us.herokuapp.com/)
