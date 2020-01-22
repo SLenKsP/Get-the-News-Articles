@@ -45,4 +45,4 @@
 
 ## Checkout the website on Heroku
 
-    - [Heroku link](https://news-scrapper-us.herokuapp.com)
+    - [National Parks Search](https://slenksp.github.io/Project_1_National_Parks/)
