@@ -54,7 +54,7 @@ removeArticleFromSaved = () => {
     $(`.remove_from_save_article`).click(function (e) {
         e.preventDefault();
         var article_id = $(this).attr("data_id");
-        if ($(`.this_article_notes`).children(`note_card`).length === 0) {
+        if ($(`.this_article_notes`).children(`.note_card`).length === 0) {
 
             $.ajax({
                 type: "POST",
@@ -66,7 +66,7 @@ removeArticleFromSaved = () => {
         } else {
             $(`.remove_notes_notice`).text("Remove all associated notes first to remove this article from Saved!");
             $(`.remove_notes_notice`).show().delay(2000).fadeOut();
-            console.log((`the text is ".${$(`.this_article_notes`).children(`note_card`).length}"`));
+            console.log((`the text is ".${$(`.this_article_notes`).children(`.note_card`).length}"`));
         }
 
     });
