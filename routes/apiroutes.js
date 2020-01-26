@@ -9,7 +9,6 @@ module.exports = app => {
         }).then(function (response) {
             var $ = cheerio.load(response.data);
             $(`.css-ye6x8s`).each(function (index, element) {
-                // element == this
                 var result = {};
                 var title = $(this).children().children().children(`a`).children(`h2`).text();
                 if (title !== "") {
@@ -27,23 +26,14 @@ module.exports = app => {
                 if (imgsrc !== undefined) {
                     result.article_img_src = imgsrc;
                 }
-                // result.title = $(this).children(`a`).children(`h2`).text();
-                // result.link = $(this).children(`a`).attr(`href`);
-                // result.summary = $(this).children(`a`).children(`p`).text();
-                // result.imgsrc = $(this).children(`a`).children(`div`).children(`figure`).children(`div`).children(`img`).attr(`src`);
-
-                // console.log(result);
                 db.Articles.create(
                     result
                 ).then((dbarticle) => {
-                    console.log(dbarticle);
-                    res.json(dbarticle)
+                    res.json(dbarticle);
                 }).catch((err) => {
-                    if (err) throw err
-                    console.log(err);
+                    res.json(err);
                 });
             });
-            // res.send(`scrap complete`)
         })
     });
     // save article in database
@@ -55,9 +45,8 @@ module.exports = app => {
             saved: true
         }).then(function (response) {
             res.json(response);
-            console.log(response);
         }).catch(function (err) {
-            console.log(err);
+            res.json(err);
         });
     });
 
@@ -70,17 +59,13 @@ module.exports = app => {
             saved: false
         }).then(function (response) {
             res.json(response);
-            console.log(response);
         }).catch(function (err) {
-            console.log(err);
+            res.json(err);
         });
     });
 
     // create a note for article
     app.post(`/api/articles/:id`, function (req, res) {
-
-        console.log(req.body.note_title);
-        console.log(req.body.note_summary);
         db.Notes.create({
             note_title: req.body.note_title,
             note_summary: req.body.note_summary,
@@ -96,7 +81,6 @@ module.exports = app => {
                 res.json(response);
             })
         }).catch(function (err) {
-            if (err)
                 res.json(err);
         });
     });
@@ -109,7 +93,7 @@ module.exports = app => {
             res.json(result);
         }).catch((err) => {
             if (err) {
-                res.json(err)
+                res.json(err);
             };
         });
     });

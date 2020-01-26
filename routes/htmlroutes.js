@@ -1,6 +1,7 @@
 const db = require(`../models`);
 
 module.exports = app => {
+    // Get main page that displays scrapped articles
     app.get(`/`, function (req, res) {
 
         var query = db.Articles.find({
@@ -8,25 +9,16 @@ module.exports = app => {
         });
         query.exec(function (err, result) {
             if (err) throw err;
-            // console.log(result);
             res.render(`index`, {
                 someArticles: result
             })
         })
     })
+    // get saved articles along with notes if any
     app.get(`/saved`, function (req, res) {
-        // db.Articles.find({
-        //     saved: true
-        // }).then(function (result) {
-        //     // console.log(result);
-        //     res.render(`saved`, {
-        //         savedArticles: result
-        //     })
-        // })
         db.Articles.find({
             saved: true
         }).populate("article_notes").then(function (result) {
-            console.log('result :', JSON.stringify(result, null, 2));
             res.render(`saved`, {
                 savedArticles: result
             });
@@ -37,16 +29,10 @@ module.exports = app => {
         db.Notes.find({
             article: req.params.id
         }).then(function (response) {
-            console.log(response);
-            // res.json({
-            //     response
-            // });
-
             res.render("saved", {
                 article_notes: response
             })
         }).catch(function (err) {
-            console.log(err);
             res.json(err);
         })
     })
