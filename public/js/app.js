@@ -48,7 +48,7 @@ removeArticleFromSaved = () => {
     $(`.remove_from_save_article`).click(function (e) {
         e.preventDefault();
         var article_id = $(this).attr("data_id");
-        if ($(`.this_article_notes`).children(`.note_card`).length === 0)
+        if ($(`.this_article_notes`).children(`.note_card`).length === 1)
         {
 
             $.ajax({
