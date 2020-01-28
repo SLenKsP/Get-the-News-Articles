@@ -47,8 +47,7 @@ removeArticleFromSaved = () => {
     $(`.remove_from_save_article`).click(function (e) {
         e.preventDefault();
         var article_id = $(this).attr("data_id");
-        // console.log(object);
-        if ($(this).parent().children(`.this_article_notes`).children(`.note_card`).length === 0) {
+        if ($(this).parent().children(`.this_article_notes`).children(`.note_card`).length === 0) {       
             $.ajax({
                 type: "POST",
                 url: "/api/unsave/" + article_id,
