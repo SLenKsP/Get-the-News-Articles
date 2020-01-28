@@ -27,8 +27,7 @@ showArticlesOnPageLoad = () => {
     $.ajax({
         type: "GET",
         url: "/",
-    }).then((res) => {
-    });
+    }).then((res) => {});
 };
 
 saveArticle = () => {
@@ -48,20 +47,18 @@ removeArticleFromSaved = () => {
     $(`.remove_from_save_article`).click(function (e) {
         e.preventDefault();
         var article_id = $(this).attr("data_id");
-        if ($(`.this_article_notes`).children(`.note_card`).length === 0)
-        {
-
+        // console.log(object);
+        if ($(this).parent().children(`.this_article_notes`).children(`.note_card`).length === 0) {
             $.ajax({
                 type: "POST",
                 url: "/api/unsave/" + article_id,
             }).done((response) => {
                 location.reload();
             });
-        } else
-        {
-            $(`.remove_notes_notice`).text("Remove all associated notes first to remove this article from Saved!");
+        } else {
+            $(this).next().text("Remove all associated notes first to remove this article from Saved!");
             $(`.remove_notes_notice`).show().delay(2000).fadeOut();
-            console.log((`the text is ".${ $(`.this_article_notes`).children(`.note_card`).length }"`));
+            console.log((`the text is ".${ $(this).parent().children(`.this_article_notes`).children(`.note_card`).length }"`));
         }
     });
 };
@@ -72,11 +69,9 @@ addNoteToTheArticle = () => {
         var note_id = $(this).attr("data_id");
         var entered_title = $(`.note_title`).val();
         var entered_summary = $(`.note_summary`).val();
-        if (entered_title === "" || entered_summary === "")
-        {
+        if (entered_title === "" || entered_summary === "") {
             $(`.text_empty_notice`).text("Please fill title and note fields!").show().delay(1500).fadeOut();
-        } else
-        {
+        } else {
             var note_data = {
                 note_title: entered_title,
                 note_summary: entered_summary
@@ -105,8 +100,7 @@ getNotesForArticle = () => {
         $.ajax({
             method: "GET",
             url: "/articles/" + note_id
-        }).then((response) => {
-        });
+        }).then((response) => {});
     });
 };
 
